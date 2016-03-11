@@ -1,0 +1,25 @@
+//
+   Created by li-rz on 16-3-10.
+
+doctype html
+html(lang="zh")
+    head
+        meta(charset="UTF-8")
+        title="沙龙"
+    body
+        form(method="post")
+            label(for="title") 题目
+                input#title(type="text" name="title")
+            label(for="username") 用户名
+                input#username(type="email" name="username")
+            label(for="password") 密码
+                input#password(type="password" name="password")
+            button 提交
+
+        button#refresh 更新
+
+        div
+            ul
+
+        script(type="text/javascript" src="js/main.js")
+        script(src="js/init.js" type="text/javascript")
