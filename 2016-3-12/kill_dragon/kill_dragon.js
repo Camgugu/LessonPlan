@@ -10,7 +10,7 @@ var koa = require('koa'),
 
 
 var app = koa(),
-    port = 8000;
+    port = 8000; // 默认端口，可修改为任何未被占用的端口
 
 app.env = 'development';
 

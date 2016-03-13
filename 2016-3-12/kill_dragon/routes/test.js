@@ -2,7 +2,7 @@
  * Created by li-rz on 16-3-8.
  */
 var util = require('util');
-// require('koa-validate');
+// var jade = require('jade');
 var db = require('../models/index.js');
 var debug = require('../instance/debug.js');
 var render = require('../instance/render.js');
@@ -13,7 +13,9 @@ module.exports = function (router) {
 
     router.get('/', function *() {
         var data = yield Test.findAll();
-        this.body = yield render('index.jade', JSON.stringify(data));
+        console.log(JSON.stringify(data));
+        //jade.compile('index.jade', );
+        this.body = yield render('index.jade', {data: JSON.parse(JSON.stringify(data))});
     });
 
     router.post('/', function *() {
@@ -27,16 +29,23 @@ module.exports = function (router) {
         //}
 
         debug(body);
-        console.log(body);
+        //console.log(body);
         var data = body.body;
-        console.log(data);
-        Test.create({
-            title: data.title,
-            username: data.username,
-            password: data.password,
-            time: new Date()
-        });
-        console.log('ok');
-        this.body = 'success';
+        if (data.method === 'refresh') {
+            var text = yield Test.findAll();
+            console.info(text);
+            this.body = text;
+        } else {
+            var insert_data = {
+                title: data.title,
+                username: data.username,
+                password: data.password,
+                time: new Date()
+            };
+            Test.create(insert_data);
+            this.body = JSON.stringify(insert_data);
+        }
+        //console.log(data);
+
     })
 };

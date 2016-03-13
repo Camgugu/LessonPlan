@@ -20,6 +20,7 @@ html(lang="zh")
 
         div
             ul
-
+                each item in data
+                    li #{item.title}, #{item.username}, #{item.password}, #{item.time}
         script(type="text/javascript" src="js/main.js")
         script(src="js/init.js" type="text/javascript")
