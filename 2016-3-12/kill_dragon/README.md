@@ -99,3 +99,8 @@
 * kill_dragon.js 主函数，入口文件。
 * migrate.js 创建数据库表，根据models文件夹创建表。
 * package.json
+
+## 框架支持
+* sequelize : https://github.com/sequelize/sequelize
+* jade : https://github.com/pugjs/jade
+* koa : https://github.com/koajs/koa
